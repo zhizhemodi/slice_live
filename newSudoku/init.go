@@ -26,7 +26,7 @@ func (tp *TablePlace) PrintTable() {
 	for _, v1 := range tp.table {
 		fmt.Print("|")
 		for _, v2 := range v1 {
-			fmt.Printf(" %v", v2)
+			fmt.Printf(" %v", v2.num)
 		}
 		fmt.Println("|")
 	}
@@ -55,6 +55,7 @@ func (tp *TablePlace) Next() {
 						y:     k2,
 						value: list[0],
 					})
+					tp.Blank--
 				}
 				if uint8(len(list)) < tp.minPosiStep.value {
 					tp.minPosiStep = step{
