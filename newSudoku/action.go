@@ -35,7 +35,7 @@ func (tp *TablePlace) FindPosi(k1, k2 int) ([]uint8, error) {
 		}
 	}
 	re := []uint8{}
-	for i := 0; i <= 9; i++ {
+	for i := 1; i <= 9; i++ {
 		if !sto[uint8(i)] {
 			re = append(re, uint8(i))
 		}
