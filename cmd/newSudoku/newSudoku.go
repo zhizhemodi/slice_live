@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	newsudoku "slice_live/newSudoku"
+	"strings"
 	"time"
 )
 
@@ -32,16 +33,15 @@ func main() {
 		// {0,2,6,0,0,3,0,0,0},
 	}
 	tp.Init(data)
-	time1 := 0
+	c0 := make(chan string)
+	tp.Next(c0, "1", -1)
 	for {
-		if tp.Blank == 0 {
+		v := <-c0
+		if strings.Contains(v, "success") {
+			fmt.Printf("v: %v\n", v)
 			break
 		}
-		tp.Next()
-		time1++
 	}
-
-	tp.PrintTable()
 	end := time.Now().Nanosecond()
 	fmt.Println(end - start)
 }
